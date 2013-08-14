@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome
+欢迎
 #######
 
 The CakePHP cookbook, is an openly developed community editable documentation
@@ -21,42 +21,41 @@ the documentation.
     - `EPUB <../_downloads/en/CakePHPCookbook.epub>`_
     - `Original Source <http://github.com/cakephp/docs>`_
 
-Getting started
+开始
 ===============
 
-Build a blog
+创建一个博客
 ------------
 
 Get started with the :doc:`blog tutorial</tutorials-and-examples/blog/blog>`.
 You'll learn the basics of CakePHP, and build a basic blog in the process.
 
-Conventions
+约定
 -----------
 
 Learn about a typical :doc:`CakePHP request
 </getting-started/a-typical-cakephp-request>` and the :doc:`conventions
 </getting-started/cakephp-conventions>` that power CakePHP.
 
-Controllers
+控制器
 -----------
 
 Controllers handle requests, and help co-ordinate and prepare
 the response for the client.  Read more about :doc:`/controllers`
 
-Views
+视图
 -----
 
-Views are the presentation layer in CakePHP.  They convert
-the data fetched from Models, into the output format the client
+视图是CakePHP的表现层.  They convert the data fetched from Models, into the output format the client
 requested.  Read more about :doc:`/views`
 
-Models
+模型
 ------
 
 Models are the heart of your application, they handle the validation,
 storage and retrieval of your data.  Read more about :doc:`/models`
 
-Getting Help
+帮助
 ============
 
 If you're stuck, there are a number of places :doc:`you can get help
