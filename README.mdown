@@ -21,10 +21,12 @@ You can install the phpdomain using:
 
 	easy_install sphinxcontrib-phpdomain
 
+*To run the easy_install command, the setuptools package must be previously installed.*
+
 Building the documentation
 --------------------------
 
-After installing the require packages you can build the documentation using `Make`
+After installing the required packages, you can build the documentation using `Make`.
 
 	# Create all the HTML docs. Including all the languages.
 	make html
@@ -38,6 +40,9 @@ After installing the require packages you can build the documentation using `Mak
 	# Create just the engish EPUB docs.
 	make epub-en
 
+	# Populate the search index
+	make populate-index
+
 This will generate all the documentation in an html form.  Other output such as 'pdf' and 'htmlhelp' are not fully complete at this time.
 
 After making changes to the documentation, you can build the html version of the docs by using `make html` again.  This will build only the html files that have had changes made to them.
@@ -46,7 +51,9 @@ After making changes to the documentation, you can build the html version of the
 Contributing
 ------------
 
-Contributing to the documentation is pretty simple. There are currently a number of outstanding issues that need to be addressed.  We've tried to flag these with `.. todo::` where possible.  To see all the outstanding todo's add the following to your `config/all.py`
+Contributing to the documentation is pretty simple. Please read the documentation on contributing to the documentation over on [the cookbook](http://book.cakephp.org/2.0/en/contributing/documentation.html) for help.
+
+There are currently a number of outstanding issues that need to be addressed.  We've tried to flag these with `.. todo::` where possible.  To see all the outstanding todo's add the following to your `config/all.py`
 
 	todo_include_todos = True
 
@@ -69,3 +76,18 @@ the `scripts` folder of this repo. In order to use it, copy it into any CakePHP 
 
 The script will process all the files under one of the translation folders and generate the possible description terms using an external API, 
 it is a good idea to go over the generated terms and clean-up whatever noise it might have generated.
+
+Making search work locally
+--------------------------
+
+* Install elasticesearch.  This varies based on your platform, but most
+  package managers have a package for it.
+* Clone the [docs_search](https://github.com/cakephp/docs_search) into a
+  web accessible directory directory.
+* Modify `searchUrl` in `themes/cakephp/static/app.js` to point at the
+  baseurl for your docs_search clone.
+* Start elasticsearch with the default configuration.
+* Populate the search index using `make populate-index`.
+* You should now be able to search the docs using elasticsearch.
+
+

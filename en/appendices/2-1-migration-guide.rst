@@ -12,25 +12,21 @@ removed from the CakePHP core.  If you do not already have these classes, you
 can use the following while upgrading::
 
     // app/View/Helper/AppHelper.php
-    <?php
     App::uses('Helper', 'View');
     class AppHelper extends Helper {
     }
 
     // app/Model/AppModel.php
-    <?php
     App::uses('Model', 'Model');
     class AppModel extends Model {
     }
 
     // app/Controller/AppController.php
-    <?php
     App::uses('Controller', 'Controller');
     class AppController extends Controller {
     }
 
     // app/Console/Command/AppShell.php
-    <?php
     App::uses('Shell', 'Console');
     class AppShell extends Shell {
     }
@@ -61,6 +57,17 @@ Models
 - Validation arrays can now be more specific with when a field is required.
   The ``required`` key now accepts ``create`` and ``update``.  These values will
   make a field required when creating or updating.
+- Model now has a ``schemaName`` property.  If your application switches
+  datasources by modifying :php:attr:`Model::$useDbConfig` you should also
+  modify ``schemaName`` or use :php:meth:`Model::setDataSource()` method which
+  handles this for you.
+
+CakeSession
+-----------
+
+.. versionchanged:: 2.1.1
+    CakeSession no longer sets the P3P header, as this is the responsibility of your application.
+    More info see ticket `#2515 <http://cakephp.lighthouseapp.com/projects/42648/tickets/2515-cakephp-20-session-p3p-header-doesnt-work-in-an-iframe>`_ in lighthouse
 
 Behaviors
 =========
@@ -133,9 +140,9 @@ Test Shell
 A new TestShell has been added. It reduces the typing required to run unit
 tests, and offers a file path based UI::
 
-    # Run the post model tests
-    Console/cake test app/Model/Post.php
-    Console/cake test app/Controller/PostsController.php
+    ./Console/cake test app Model/Post
+    ./Console/cake test app Controller/PostsController
+    ./Console/cake test Plugin View/Helper/MyHelper
 
 The old testsuite shell and its syntax are still available.
 
@@ -177,7 +184,7 @@ Controller
 Controller
 ----------
 
-- :php:attr:`Controller::$uses` was modfied the default value is now ``true``
+- :php:attr:`Controller::$uses` was modified the default value is now ``true``
   instead of false.  Additionally different values are handled slightly
   differently, but will behave the same in most cases.
 
@@ -210,7 +217,7 @@ AclComponent
 - Acl backend implementations should now be put in ``Controller/Component/Acl``.
 - Acl implementations should be moved into the Component/Acl directory from
   Component.  For example if your Acl class was called ``CustomAclComponent``,
-  and was in ``Controller/Component/CustomAclComponent.php``. 
+  and was in ``Controller/Component/CustomAclComponent.php``.
   It should be moved into ``Controller/Component/Acl/CustomAcl.php``, and be
   named ``CustomAcl``.
 - :php:class:`DbAcl` has been moved into a separate file.
@@ -238,8 +245,8 @@ HtmlHelper
   an array.  This gives more control and flexibility over the first crumb link.
 - :php:meth:`HtmlHelper::docType()` now defaults to html5.
 - :php:meth:`HtmlHelper::image()` now has a ``fullBase`` option.
-- :php:meth:`HtmlHelper::video()` has been added.  You can use this method to
-  create HTML5 video elements.
+- :php:meth:`HtmlHelper::media()` has been added.  You can use this method to
+  create HTML5 audio/video elements.
 - :term:`plugin syntax` support has been added for
   :php:meth:`HtmlHelper::script()`, :php:meth:`HtmlHelper::css()`, :php:meth:`HtmlHelper::image()`.
   You can now easily link to plugin assets using ``Plugin.asset``.
@@ -254,7 +261,6 @@ View
   instead.
 - ``$scripts_for_layout`` is deprecated.  Use the following instead::
 
-        <?php
         echo $this->fetch('meta');
         echo $this->fetch('css');
         echo $this->fetch('script');
@@ -327,6 +333,9 @@ FormHelper
   inputs.
 - The ``type`` attribute for :php:meth:`FormHelper::button()` can be removed now.  It still
   defaults to 'submit'.
+- :php:meth:`FormHelper::radio()` now allows you to disable all options.
+  You can do this by setting either ``'disabled' => true`` or ``'disabled' => 'disabled'``
+  in the ``$attributes`` array.
 
 PaginatorHelper
 ---------------

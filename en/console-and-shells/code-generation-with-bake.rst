@@ -1,11 +1,9 @@
 Code Generation with Bake
 #########################
 
-You’ve already learned about scaffolding in CakePHP: a simple way
-to get up and running with only a database and some bare classes.
-CakePHP’s Bake console is another effort to get you up and running
-in CakePHP – fast. The Bake console can create any of CakePHP’s
-basic ingredients: models, views and controllers. And we aren’t
+CakePHP's Bake console is another effort to get you up and running
+in CakePHP – fast. The Bake console can create any of CakePHP's
+basic ingredients: models, views and controllers. And we aren't
 just talking skeleton classes: Bake can create a fully functional
 application in just a few minutes. In fact, Bake is a natural step
 to take once an application has been scaffolded.
@@ -19,7 +17,9 @@ execute rights on the cake bash script or call it using ./cake
 bake. The cake console is run using the PHP CLI (command line
 interface). If you have problems running the script, ensure that
 you have the PHP CLI installed and that it has the proper modules
-enabled (eg: MySQL).
+enabled (eg: MySQL) Users also might have issues if the 
+database host is 'localhost' and should try '127.0.0.1' instead.
+This could cause issues with PHP CLI. 
 
 When running Bake for the first time, you'll be prompted to create
 a Database Configuration file, if you haven't created one already.

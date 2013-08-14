@@ -7,16 +7,15 @@
     :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 #}
-{%- if pagename != "search" %}
-<div id="searchbox">
-    <form id="searchform" class="search" action="{{ pathto('search') }}" method="get">
-      <input class="search-input" type="search" name="q" size="18" />
-      <input class="search-submit" type="image" src="{{ pathto('_static/search-submit.png', 1) }}" alt="{{ _('Go') }}" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    {{ _('Enter search terms or a class or function name. Hit enter for full text search') }}
-    </p>
+<div id="searchbox" class="columns nine phone-three">
+
+	<form id="searchform" class="search" action="{{ pathto('search') }}" method="get">
+		<input class="search-input" autocomplete="off" autofocus="autofocus" type="search" name="q" size="18" />
+		<input class="search-submit search-big button red" type="submit" value="{{ _('Search') }}" />
+		<input type="hidden" name="check_keywords" value="yes" />
+		<input type="hidden" name="area" value="default" />
+
+		<a href="#" id="tablet-nav" class="show-on-phones pale button small">{{ _('Nav') }}</a>
+	</form>
+
 </div>
-{%- endif %}

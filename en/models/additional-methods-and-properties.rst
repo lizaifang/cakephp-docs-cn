@@ -11,7 +11,6 @@ the fat model.
 
 ::
 
-    <?php
     class Example extends AppModel {
         public function getRecent() {
             $conditions = array(
@@ -25,7 +24,6 @@ This ``getRecent()`` method can now be used within the controller.
 
 ::
 
-    <?php
     $recent = $this->Example->getRecent();
 
 :php:meth:`Model::associations()`
@@ -33,14 +31,13 @@ This ``getRecent()`` method can now be used within the controller.
 
 Get associations::
 
-    <?php
     $result = $this->Example->associations();
     // $result equals array('belongsTo', 'hasOne', 'hasMany', 'hasAndBelongsToMany')
 
 :php:meth:`Model::buildQuery(string $type = 'first', array $query = array())`
 =============================================================================
 
-Builds the query array that is used by the data source to generate the query to 
+Builds the query array that is used by the data source to generate the query to
 fetch the data.
 
 :php:meth:`Model::deconstruct(string $field, mixed $data)`
@@ -51,24 +48,24 @@ Deconstructs a complex data type (array or object) into a single field value.
 :php:meth:`Model::escapeField(string $field = null, string $alias = null)`
 ==========================================================================
 
-Escapes the field name and prepends the model name. Escaping is done according 
+Escapes the field name and prepends the model name. Escaping is done according
 to the current database driver's rules.
 
 :php:meth:`Model::exists($id)`
-===========================
+==============================
 
 Returns true if a record with the particular ID exists.
 
-If ID is not provided it calls :php:meth:`Model::getID()` to obtain the current record ID to verify, and 
-then performs a ``Model::find('count')`` on the currently configured datasource to 
+If ID is not provided it calls :php:meth:`Model::getID()` to obtain the current record ID to verify, and
+then performs a ``Model::find('count')`` on the currently configured datasource to
 ascertain the existence of the record in persistent storage.
 
 .. note ::
-Parameter $id was added in 2.1. Prior to that it does not take any parameter.
+
+    Parameter $id was added in 2.1. Prior to that it does not take any parameter.
 
 ::
 
-    <?php
     $this->Example->id = 9;
     if ($this->Example->exists()) {
         // ...

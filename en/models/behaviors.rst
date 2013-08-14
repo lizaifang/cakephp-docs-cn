@@ -37,9 +37,7 @@ Using Behaviors
 Behaviors are attached to models through the ``$actsAs`` model class
 variable::
 
-    <?php
     class Category extends AppModel {
-        public $name   = 'Category';
         public $actsAs = array('Tree');
     }
 
@@ -48,7 +46,6 @@ structure using the TreeBehavior. Once a behavior has been
 specified, use the methods added by the behavior as if they always
 existed as part of the original model::
 
-    <?php
     // Set ID
     $this->Category->id = 42;
 
@@ -60,9 +57,7 @@ behavior is attached to the model. Here, we tell our TreeBehavior
 the names of the "left" and "right" fields in the underlying
 database table::
 
-    <?php
     class Category extends AppModel {
-        public $name   = 'Category';
         public $actsAs = array('Tree' => array(
             'left'  => 'left_node',
             'right' => 'right_node'
@@ -73,9 +68,7 @@ We can also attach several behaviors to a model. There's no reason
 why, for example, our Category model should only behave as a tree,
 it may also need internationalization support::
 
-    <?php
     class Category extends AppModel {
-        public $name   = 'Category';
         public $actsAs = array(
             'Tree' => array(
               'left'  => 'left_node',
@@ -93,7 +86,6 @@ our previous Category model, which is acting as a Tree and a
 Translate model, we need for some reason to force it to stop acting
 as a Translate model::
 
-    <?php
     // Detach a behavior from our model:
     $this->Category->Behaviors->unload('Translate');
 
@@ -105,7 +97,6 @@ behavior from acting upon our CakePHP model callbacks. Instead of
 detaching the behavior, we then tell our model to stop informing of
 these callbacks to the Translate behavior::
 
-    <?php
     // Stop letting the behavior handle our model callbacks
     $this->Category->Behaviors->disable('Translate');
 
@@ -113,7 +104,6 @@ We may also need to find out if our behavior is handling those
 model callbacks, and if not we then restore its ability to react to
 them::
 
-    <?php
     // If our behavior is not handling model callbacks
     if (!$this->Category->Behaviors->enabled('Translate')) {
         // Tell it to start doing so
@@ -125,16 +115,14 @@ runtime, we can also attach new behaviors. Say that our familiar
 Category model needs to start behaving as a Christmas model, but
 only on Christmas day::
 
-    <?php
     // If today is Dec 25
-    if (date('m/d') == '12/25') {
+    if (date('m/d') === '12/25') {
         // Our model needs to behave as a Christmas model
         $this->Category->Behaviors->load('Christmas');
     }
 
 We can also use the load method to override behavior settings::
 
-    <?php
     // We will change one setting from our already attached behavior
     $this->Category->Behaviors->load('Tree', array('left' => 'new_left_node'));
 
@@ -143,11 +131,10 @@ attached. If we pass the name of a behavior to the method, it will
 tell us if that behavior is attached to the model, otherwise it
 will give us the list of attached behaviors::
 
-    <?php
     // If the Translate behavior is not attached
-    if (!$this->Category->Behaviors->attached('Translate')) {
+    if (!$this->Category->Behaviors->loaded('Translate')) {
         // Get the list of all behaviors the model has attached
-        $behaviors = $this->Category->Behaviors->attached();
+        $behaviors = $this->Category->Behaviors->loaded();
     }
 
 Creating Behaviors
@@ -174,9 +161,7 @@ the chapters about core behaviors and their configuration.
 A quick example that illustrates how behavior settings can be
 passed from the model to the behavior::
 
-    <?php
     class Post extends AppModel {
-        public $name = 'Post'
         public $actsAs = array(
             'YourBehavior' => array(
                 'option1_key' => 'option1_value'
@@ -188,8 +173,7 @@ Since behaviors are shared across all the model instances that use them, it's a
 good practice to store the settings per alias/model name that is using the
 behavior.  When created behaviors will have their ``setup()`` method called::
 
-    <?php
-    public function setup(Model $Model, $settings) {
+    public function setup(Model $Model, $settings = array()) {
         if (!isset($this->settings[$Model->alias])) {
             $this->settings[$Model->alias] = array(
                 'option1_key' => 'option1_default_value',
@@ -207,9 +191,7 @@ Creating behavior methods
 Behavior methods are automatically available on any model acting as
 the behavior. For example if you had::
 
-    <?php
     class Duck extends AppModel {
-        public $name = 'Duck';
         public $actsAs = array('Flying');
     }
 
@@ -219,13 +201,11 @@ automatically get passed a reference of the calling model as the
 first parameter. All other supplied parameters are shifted one
 place to the right. For example::
 
-    <?php
     $this->Duck->fly('toronto', 'montreal');
 
 Although this method takes two parameters, the method signature
 should look like::
 
-    <?php
     public function fly(Model $Model, $from, $to) {
         // Do some flying.
     }
@@ -244,22 +224,21 @@ similar to ``Model::findAllByXXX`` methods on your behaviors.  Mapped methods ne
 to be declared in your behaviors ``$mapMethods`` array.  The method signature for
 a mapped method is slightly different than a normal behavior mixin method::
 
-    <?php
     class MyBehavior extends ModelBehavior {
         public $mapMethods = array('/do(\w+)/' => 'doSomething');
 
-        public function doSomething($model, $method, $arg1, $arg2) {
+        public function doSomething(Model $model, $method, $arg1, $arg2) {
             debug(func_get_args());
             //do something
         }
     }
 
-The above will map every ``doXXX()`` method call to the behavior.  As you can see, the model is
-still the first parameter, but the called method name will be the 2nd parameter.  This allows
-you to munge the method name for additional information, much like ``Model::findAllByXX``.  If the above
-behavior was attached to a model the following would happen::
+The above will map every ``doXXX()`` method call to the behavior.  As you can
+see, the model is still the first parameter, but the called method name will be
+the 2nd parameter.  This allows you to munge the method name for additional
+information, much like ``Model::findAllByXX``.  If the above behavior was
+attached to a model the following would happen::
 
-    <?php
     $model->doReleaseTheHounds('homer', 'lenny');
 
     // would output
@@ -269,19 +248,20 @@ Behavior callbacks
 ==================
 
 Model Behaviors can define a number of callbacks that are triggered
-before/after the model callbacks of the same name. Behavior
+before the model callbacks of the same name. Behavior
 callbacks allow your behaviors to capture events in attached models
 and augment the parameters or splice in additional behavior.
 
-The available callbacks are:
+All behavior callbacks are fired **before** the model/behavior callbacks are:
 
--  ``beforeValidate`` is fired before a model's beforeValidate
--  ``beforeFind`` is fired before a model's beforeFind
--  ``afterFind`` is fired before a model's afterFind
--  ``beforeSave`` is fired before a model's beforeSave
--  ``afterSave`` is fired before a model's afterSave
--  ``beforeDelete`` is fired after a model's beforeDelete
--  ``afterDelete`` is fired before a model's afterDelete
+-  ``beforeValidate``
+-  ``beforeFind``
+-  ``afterFind``
+-  ``beforeSave``
+-  ``afterSave``
+-  ``beforeDelete``
+-  ``afterDelete``
+
 
 Creating a behavior callback
 ----------------------------
@@ -293,51 +273,51 @@ behavior class. Much like regular behavior methods, they receive a
 ``$Model`` parameter as the first argument. This parameter is the
 model that the behavior method was invoked on.
 
-.. php:method:: function setup(Model $model, array $settings)
+.. php:method:: setup(Model $Model, array $settings = array())
 
     Called when a behavior is attached to a model.  The settings come from the
     attached model's ``$actsAs`` property.
 
-.. php:method:: function cleanup(Model $model) 
+.. php:method:: cleanup(Model $Model)
 
     Called when a behavior is detached from a model.  The base method removes
     model settings based on ``$model->alias``. You can override this method and
     provide custom cleanup functionality.
 
-.. php:method:: function beforeFind(Model $model, $query)
+.. php:method:: beforeFind(Model $Model, array $query)
 
     If a behavior's beforeFind return's false it will abort the find().
     Returning an array will augment the query parameters used for the
     find operation.
 
-.. php:method:: afterFind(Model $model, $results, $primary)
+.. php:method:: afterFind(Model $Model, mixed $results, boolean $primary)
 
     You can use the afterFind to augment the results of a find. The
     return value will be passed on as the results to either the next
     behavior in the chain or the model's afterFind.
 
-.. php:method:: beforeDelete(Model $model, $cascade = true)
+.. php:method:: beforeDelete(Model $Model, boolean $cascade = true)
 
     You can return false from a behavior's beforeDelete to abort the
     delete. Return true to allow it continue.
 
-.. php:method:: afterDelete(Model $model)
+.. php:method:: afterDelete(Model $Model)
 
     You can use afterDelete to perform clean up operations related to
     your behavior.
 
-.. php:method:: beforeSave(Model $model)
+.. php:method:: beforeSave(Model $Model)
 
     You can return false from a behavior's beforeSave to abort the
     save. Return true to allow it continue.
 
-.. php:method:: afterSave(Model $model, $created)
+.. php:method:: afterSave(Model $Model, boolean $created)
 
     You can use afterSave to perform clean up operations related to
     your behavior. $created will be true when a record is created, and
     false when a record is updated.
 
-.. php:method:: beforeValidate(Model $model)
+.. php:method:: beforeValidate(Model $Model)
 
     You can use beforeValidate to modify a model's validate array or
     handle any other pre-validation logic. Returning false from a

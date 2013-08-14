@@ -29,7 +29,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = u'CakePHP Cookbook'
-copyright = u'2011, Cake Software Foundation, Inc'
+copyright = u'2013, Cake Software Foundation, Inc'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -71,7 +71,7 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-highlight_language = 'php'
+highlight_language = 'phpinline'
 
 
 # -- Options for HTML output ---------------------------------------------------
@@ -94,6 +94,7 @@ html_theme_path = ['../themes']
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
+html_short_title = u'Cookbook 2.x'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -119,7 +120,7 @@ html_static_path = []
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
- '**' : ['searchbox.html', 'globaltoc.html', 'relations.html', 'sourcelink.html']
+ '**' : ['globaltoc.html', 'localtoc.html']
 }
 
 # Additional templates that should be rendered to pages, maps page names to
@@ -162,28 +163,28 @@ htmlhelp_basename = 'CakePHPCookbookdoc'
 #latex_paper_size = 'letter'
 
 # The font size ('10pt', '11pt' or '12pt').
-#latex_font_size = '10pt'
+latex_font_size = '11pt'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'CakePHPCookbook.tex', u'CakePHP Cookbook Documentation',
-   u'CakePHP', 'manual'),
+  ('pdf-contents', 'CakePHPCookbook.tex', u'CakePHP Cookbook Documentation',
+   u'Cake Software Foundation', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-#latex_logo = None
+latex_logo = '../themes/cakephp/static/pdf-logo.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
 #latex_use_parts = False
 
 # If true, show page references after internal links.
-#latex_show_pagerefs = False
+# latex_show_pagerefs = True
 
 # If true, show URL addresses after external links.
-#latex_show_urls = False
+latex_show_urls = 'footnote'
 
 # Additional stuff for the LaTeX preamble.
 #latex_preamble = ''
@@ -192,7 +193,35 @@ latex_documents = [
 #latex_appendices = []
 
 # If false, no module index is generated.
-#latex_domain_indices = True
+# latex_domain_indices = True
+
+
+preamb = ur'''
+% Custom colors.
+\definecolor{ChapterColor}{RGB}{201,36,52}
+\definecolor{TitleColor}{RGB}{0,0,0}
+
+% No section numbering
+\setcounter{secnumdepth}{0}
+
+% Make chapter titles red.
+\ChNameVar{\color{TitleColor}\Large}
+\ChNumVar{\color{TitleColor}\Large}
+\ChTitleVar{\color{ChapterColor}\Huge\sf}
+
+% link colors
+\definecolor{InnerLinkColor}{RGB}{65,114,130}
+\definecolor{OuterLinkColor}{RGB}{0,61,76}
+
+% background and border for code examples.
+\definecolor{VerbatimColor}{RGB}{242,242,242}
+\definecolor{VerbatimBorderColor}{RGB}{230,230,230}
+'''
+
+latex_elements ={
+    'preamble': preamb,
+    'fncychap': '\\usepackage[Sonny]{fncychap}'
+}
 
 
 # -- Options for manual page output --------------------------------------------
@@ -211,9 +240,9 @@ man_pages = [
 epub_title = u'CakePHP Cookbook'
 epub_author = u'Cake Software Foundation, Inc.'
 epub_publisher = u'Cake Software Foundation, Inc.'
-epub_copyright = u'2012, Cake Software Foundation, Inc.'
+epub_copyright = u'2013, Cake Software Foundation, Inc.'
 
-epub_theme = 'epub'
+epub_theme = 'cakephp-epub'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -238,13 +267,23 @@ epub_theme = 'epub'
 #epub_post_files = []
 
 # A list of files that should not be packed into the epub file.
-#epub_exclude_files = []
+epub_exclude_files = [
+    'index.html',
+    'pdf-contents.html',
+    'search.html',
+]
 
 # The depth of the table of contents in toc.ncx.
-#epub_tocdepth = 3
+epub_tocdepth = 2
 
 # Allow duplicate toc entries.
-#epub_tocdup = True
+epub_tocdup = False
 
 # Languages available.
-languages = ['en', 'pt', 'es', 'ja', 'ru']
+languages = ['en', 'pt', 'es', 'ja', 'ru', 'fr', 'cn']
+
+# Hack to render the php source code without the <?php tag
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+
+lexers['phpinline'] = PhpLexer(startinline=True)

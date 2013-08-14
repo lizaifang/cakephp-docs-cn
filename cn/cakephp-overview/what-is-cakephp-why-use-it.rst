@@ -19,7 +19,7 @@ check out a copy of CakePHP and get started with the real guts of
 your application.
 
 CakePHP has an active
-`developer team <http://cakephp.lighthouseapp.com/contributors>`_
+`developer team <https://github.com/cakephp?tab=members>`_
 and community, bringing great value to the project. In addition to
 keeping you from wheel-reinventing, using CakePHP means your
 application’s core is well tested and is being constantly
@@ -30,7 +30,7 @@ Here’s a quick list of features you’ll enjoy when using CakePHP:
 
 -  Active, friendly `community <http://cakephp.org/feeds>`_
 -  Flexible `licensing <http://en.wikipedia.org/wiki/MIT_License>`_
--  Compatible with versions PHP 5.2.6 and greater.
+-  Compatible with versions PHP 5.2.8 and greater.
 -  Integrated
    `CRUD <http://en.wikipedia.org/wiki/Create,_read,_update_and_delete>`_
    for database interaction.
