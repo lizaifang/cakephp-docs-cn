@@ -1,4 +1,4 @@
-JSON and XML views
+JSON和XML视图
 ##################
 
 New in CakePHP 2.1 are two new view classes. The ``XmlView`` and ``JsonView``

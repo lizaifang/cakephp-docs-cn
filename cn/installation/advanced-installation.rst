@@ -1,7 +1,7 @@
-Advanced Installation
+高级安装
 #####################
 
-Installing CakePHP with PEAR installer
+用PEAR安装CakePHP
 ======================================
 
 CakePHP publishes a PEAR package that you can install using the pear installer.
@@ -22,7 +22,7 @@ will be located on PHP's ``include_path`` you won't need to make any other
 changes.
 
 
-Installing CakePHP with composer
+用composer安装CakePHP
 ================================
 
 Composer is a dependency management tool for PHP 5.3+. It solves many of the
@@ -96,7 +96,7 @@ composer. Be sure to keep the composer.json and composer.lock file with the
 rest of your source code.
 
 
-Sharing CakePHP libraries with multiple applications
+多个应用间共享CakePHP库
 ====================================================
 
 There may be some situations where you wish to place CakePHP's

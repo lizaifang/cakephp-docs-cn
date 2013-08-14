@@ -1,4 +1,4 @@
-URL Rewriting
+URL重写
 #############
 
 Apache and mod\_rewrite (and .htaccess)

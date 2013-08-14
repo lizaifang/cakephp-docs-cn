@@ -1,4 +1,4 @@
-Themes
+主题
 ######
 
 You can take advantage of themes, making it easy to switch the look and feel of
