@@ -1,4 +1,4 @@
-Core Libraries
+核心库
 ##############
 
 CakePHP comes with a plethora of built-in functions and classes. These classes
@@ -8,8 +8,7 @@ applications.
 General Purpose
 ===============
 
-General purpose libraries are available and reused in many places across
-CakePHP.
+General purpose libraries are available and reused in many places across CakePHP.
 
 .. toctree::
     :maxdepth: 2
@@ -18,7 +17,7 @@ CakePHP.
 
 .. _core-behaviors:
 
-Behaviors
+行为
 =========
 
 Behaviors add extra functionality to your models. CakePHP comes
@@ -35,7 +34,7 @@ on :doc:`/models/behaviors`.
 
 .. _core-components:
 
-Components
+组件
 ==========
 
 CakePHP has a selection of components to help take care of basic tasks in your
@@ -49,7 +48,7 @@ configure and use components.
 
 .. _core-helpers:
 
-Helpers
+助手
 =======
 
 CakePHP features a number of helpers that aid in view creation. They assist in
@@ -65,7 +64,7 @@ can create and use your own helpers.
 
     core-libraries/toc-helpers
 
-Utilities
+公用程序
 =========
 
 Beyond the core MVC components, CakePHP includes a great selection of utility

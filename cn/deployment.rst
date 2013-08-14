@@ -1,8 +1,8 @@
-Deployment
+部署
 ##########
 
-Once your application is complete, or even before that you'll want to deploy it.
-There are a few things you should do when deploying a CakePHP application.
+一旦你的应用完成了, 或者你想要部署它了.
+为了发布CakePHP应用, 还有一些事要做.
 
 Check your security
 ===================
@@ -30,26 +30,22 @@ In all cases you will want to set the virtual host/domain's document to be
 ``app/webroot/``. This removes the possibility of files outside of the webroot
 directory being executed.
 
-Update core.php
+修改 core.php
 ===============
 
-Updating core.php, specifically the value of ``debug`` is extremely important.
-Turning debug = 0 disables a number of development features that should never be
-exposed to the Internet at large. Disabling debug changes the following types of
-things:
+修改 core.php, 尤其是 ``debug`` 的值非常重要.
+修改为 debug = 0 来禁止大部分开发用的特性不能暴露到网络上.
+禁用调式会有以下改变:
 
-* Debug messages, created with :php:func:`pr()` and :php:func:`debug()` are
-  disabled.
-* Core CakePHP caches are by default flushed every 999 days, instead of every
-  10 seconds as in development.
-* Error views are less informative, and give generic error messages instead.
-* Errors are not displayed.
-* Exception stack traces are disabled.
+* 禁用 :php:func:`pr()` 和 :php:func:`debug()` 调试信息.
+* CakePHP核心的缓存会默认设置刷新周期为999天, 而开发模式中是每10刷新.
+* 视图错误提示信息减少, 并会使用通用的错误信息代替.
+* 错误不会被显示出来.
+* 禁用异常的栈追踪.
 
-In addition to the above, many plugins and application extensions use ``debug``
-to modify their behavior.
+除了上述内容, 许多插件和应用扩展也使用 ``debug`` 来控制自身的行为.
 
-Improve your application's performance
+提高应用的性能
 ======================================
 
 Since handling static assets, such as images, JavaScript and CSS files of plugins,

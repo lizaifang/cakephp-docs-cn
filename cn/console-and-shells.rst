@@ -1,4 +1,4 @@
-Console and Shells
+控制台和终端
 ##################
 
 CakePHP features not only a web framework but also a console framework
@@ -12,7 +12,7 @@ Some of these applications are used in concert with other CakePHP
 features (like ACL or i18n), and others are for general use in
 getting you working faster.
 
-The CakePHP console
+CakePHP控制台
 ===================
 
 This section provides an introduction into CakePHP at the
@@ -129,7 +129,7 @@ If you are on Windows Vista or 7, you should follow the steps below.
 
 #. Click Ok and ``cake`` should work anywhere.
 
-Creating a shell
+创建一个控制台命令
 ================
 
 Let's create a shell for use in the Console. For this example,
@@ -295,7 +295,7 @@ from inside your plugin's shell.
 
 .. _shell-output-level:
 
-Console output levels
+控制台输出级别
 =====================
 
 Shells often need different levels of verbosity.  When running as cron jobs,
@@ -326,7 +326,7 @@ You can control the output level of shells, by using the ``--quiet`` and ``--ver
 options. These options are added by default, and allow you to consistently control
 output levels inside your CakePHP shells.
 
-Styling output
+样式输出
 ==============
 
 Styling output is done by including tags - just like html - in your output.
@@ -370,7 +370,7 @@ truthy value enables them.
 Adding a style makes it available on all instances of ConsoleOutput as well,
 so you don't have to redeclare styles for both stdout and stderr objects.
 
-Turning off colouring
+关闭颜色
 ---------------------
 
 Although colouring is pretty awesome, there may be times when you want to turn it off,

@@ -1,8 +1,8 @@
-Contributing
+贡献
 ############
 
-There are a number of ways you can contribute to CakePHP. The following sections
-cover the various ways you can contribute to CakePHP:
+有很多方式可以为CakePHP出一份力.
+下面包含了很多能为CakePHP出力的方式:
 
 .. toctree::
     :maxdepth: 1

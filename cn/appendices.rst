@@ -1,10 +1,10 @@
-Appendices
+附录
 ##########
 
 Appendices contain information regarding the new features
 introduced in 2.0, and the migration path from 1.3 to 2.0.
 
-2.4 Migration Guide
+2.4 迁移向导
 ===================
 
 .. toctree::
@@ -12,7 +12,7 @@ introduced in 2.0, and the migration path from 1.3 to 2.0.
 
     appendices/2-4-migration-guide
 
-2.3 Migration Guide
+2.3 迁移向导
 ===================
 
 .. toctree::
@@ -20,7 +20,7 @@ introduced in 2.0, and the migration path from 1.3 to 2.0.
 
     appendices/2-3-migration-guide
 
-2.2 Migration Guide
+2.2 迁移向导
 ===================
 
 .. toctree::
@@ -28,7 +28,7 @@ introduced in 2.0, and the migration path from 1.3 to 2.0.
 
     appendices/2-2-migration-guide
 
-2.1 Migration Guide
+2.1 迁移向导
 ===================
 
 .. toctree::
@@ -37,7 +37,7 @@ introduced in 2.0, and the migration path from 1.3 to 2.0.
     appendices/2-1-migration-guide
     appendices/new-features-in-cakephp-2-1
 
-2.0 Migration Guide
+2.0 迁移向导
 ===================
 
 .. toctree::
@@ -47,7 +47,7 @@ introduced in 2.0, and the migration path from 1.3 to 2.0.
     appendices/new-features-in-cakephp-2-0
     appendices/phpunit-migration-hints
 
-Migration from 1.2 to 1.3
+由 1.2 迁移到 1.3
 =========================
 
 .. toctree::

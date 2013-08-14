@@ -52,8 +52,7 @@ requested.  Read more about :doc:`/views`
 模型
 ------
 
-Models are the heart of your application, they handle the validation,
-storage and retrieval of your data.  Read more about :doc:`/models`
+模型是你应用的核心部分, 他们处理数据的验证, 存储, 获取.  深入阅读 :doc:`/models`
 
 帮助
 ============

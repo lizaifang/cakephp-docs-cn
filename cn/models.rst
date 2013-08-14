@@ -1,4 +1,4 @@
-Models
+模型
 ######
 
 Models are the classes that sit as the business layer in your application.
@@ -21,7 +21,7 @@ properties a model can have. It'll explain the different ways to
 associate your data. It'll describe how to find, save, and delete
 data. Finally, it'll look at Datasources.
 
-Understanding Models
+理解模型
 ====================
 
 A Model represents your data model. In object-oriented programming

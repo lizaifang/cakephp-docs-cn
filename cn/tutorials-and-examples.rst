@@ -1,4 +1,4 @@
-Tutorials & Examples
+教程 和 示例
 ####################
 
 In this section, you can walk through typical CakePHP applications

@@ -1,4 +1,4 @@
-Getting Started
+开始
 ###############
 
 The CakePHP framework provides a robust base for your application.
@@ -19,7 +19,7 @@ To start off we'll build a simple blog application.
 .. include:: /tutorials-and-examples/blog/blog.rst
 .. include:: /tutorials-and-examples/blog/part-two.rst
 
-Additional Reading
+深入了解
 ==================
 
 .. toctree::
